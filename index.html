@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Wallet</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <h1>My Wallet</h1>
+      </div>
+      <div class="mode-switch">
+        <label class="switch-label">View</label>
+        <button id="allBtn" class="btn-toggle active">All</button>
+        <button id="incomeBtn" class="btn-toggle">Income</button>
+        <button id="expenseBtn" class="btn-toggle">Expense</button>
+      </div>
+    </header>
+
+    <main class="grid-container">
+      <section class="panel summary-panel">
+        <h2>Summary</h2>
+        <div class="balances">
+          <div class="balance-card">
+            <p>Income</p><strong id="incomeValue">$0.00</strong>
+          </div>
+          <div class="balance-card">
+            <p>Expense</p><strong id="expenseValue">$0.00</strong>
+          </div>
+          <div class="balance-card">
+            <p>Net</p><strong id="netValue">$0.00</strong>
+          </div>
+        </div>
+        <div class="budget-settings">
+          <h3>Monthly Plan</h3>
+          <div class="field-row">
+            <label for="monthlyIncome">Income (USD)</label>
+            <input id="monthlyIncome" type="number" min="0" step="0.01" placeholder="4000" />
+          </div>
+          <div class="budget-meta">
+            <p>Spent / Income: <strong id="incomeRatio">0%</strong></p>
+            <p>Remaining Income: <strong id="remainingBudget">$0.00</strong></p>
+          </div>
+          <div class="budget-bar">
+            <div id="budgetProgress" class="budget-progress"></div>
+          </div>
+        </div>
+        <div class="category-header">
+          <h3>Category Breakdown</h3>
+          <button id="toggleBreakdown" class="btn-secondary">Hide breakdown</button>
+        </div>
+        <ul id="categoryList" class="category-list"></ul>
+      </section>
+
+      <section class="panel add-panel">
+        <h2>Add New Expense</h2>
+        <form id="expenseForm">
+          <div class="field-row">
+            <label for="title">Title</label>
+            <input id="title" required placeholder="Coffee, Uber, Lunch" />
+          </div>
+          <div class="field-row">
+            <label for="amount">Amount (USD)</label>
+            <input id="amount" type="number" min="0.01" step="0.01" required placeholder="8.50" />
+          </div>
+          <div class="field-row">
+            <label for="type">Type</label>
+            <select id="type" required>
+              <option value="expense">Expense</option>
+              <option value="income">Income</option>
+            </select>
+          </div>
+          <div class="field-row">
+            <label for="category">Description</label>
+            <input id="category" type="text" required placeholder="Enter description" />
+          </div>
+          <div class="actions">
+            <button type="submit" class="btn-primary">Add Expense</button>
+            <button type="button" id="clearAll" class="btn-secondary">Clear All</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel table-panel">
+        <h2>Transactions</h2>
+        <div class="table-wrapper">
+          <table id="expenseTable" class="expense-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Amount</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+    <footer class="footer">
+      Built with JavaScript, CSS Grid & LocalStorage.
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
